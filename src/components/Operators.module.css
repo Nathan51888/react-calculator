@@ -1,0 +1,36 @@
+.operatorGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "backspace"
+    "plus"
+    "minus"
+    "equals";
+  gap: 0.4em;
+  width: fit-content;
+  height: 50%;
+  margin: auto;
+}
+
+.operator {
+  background-color: rgb(110, 110, 110);
+}
+
+#backspace {
+  grid-area: backspace;
+}
+
+#plus {
+  grid-area: plus;
+}
+
+#minus {
+  grid-area: minus;
+}
+
+#equals {
+  grid-area: equals;
+  color: black;
+  background-color: rgb(130, 178, 240);
+}

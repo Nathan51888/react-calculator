@@ -1,0 +1,16 @@
+body {
+  color: white;
+  background-color: rgb(36, 36, 36);
+  margin: 15em auto;
+  width: fit-content;
+}
+
+button {
+  font-size: 1.1rem;
+  color: white;
+  background-color: rgb(58, 58, 58);
+  border: none;
+  border-radius: 9px;
+  padding: 1em;
+  width: 8em;
+}

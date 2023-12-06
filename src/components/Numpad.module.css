@@ -1,0 +1,18 @@
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "7 8 9"
+    "4 5 6"
+    "1 2 3"
+    ". zero .";
+  gap: 0.4em;
+  width: fit-content;
+  height: 50%;
+  margin: auto;
+}
+
+#zero {
+  grid-area: zero;
+}

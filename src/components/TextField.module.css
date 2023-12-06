@@ -1,0 +1,22 @@
+.textFieldBox {
+  padding: 0.8em;
+  margin: 1em auto;
+  border: 1px solid rgb(68, 68, 68);
+  border-radius: 5px;
+}
+
+#textFieldResult {
+  font-family: "Seven Segment";
+  color: gray;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+}
+
+#textField {
+  font-family: "Seven Segment";
+  font-size: 2rem;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+}
