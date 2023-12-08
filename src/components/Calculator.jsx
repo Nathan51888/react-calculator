@@ -8,7 +8,7 @@ function Calculator() {
   const [currentEquation, setCurrentEquation] = useState([]);
   const [currentNumber, setCurrentNumber] = useState("");
   const [textField, setTextField] = useState("");
-  const [finalResult, setFinalResult] = useState(0);
+  const [textFieldResult, setTextFieldResult] = useState(0);
 
   useEffect(() => {
     setTextField(currentEquation.join("") + currentNumber);
@@ -71,12 +71,41 @@ function Calculator() {
   }
 
   function equals() {
-    return;
+    // pushes currentNumber to a temporary equation array
+    const tempEquation = [...currentEquation];
+    tempEquation.push(currentNumber);
+
+    // default result being currentNumber
+    let tempFinalResult = parseInt(tempEquation[0]);
+    console.log(tempEquation);
+
+    // skips if there's nothing in currentEquation
+    tempEquation.forEach((item, index) => {
+      switch (item) {
+        case "+":
+          if (!tempEquation[index + 1]) return;
+          tempFinalResult += parseInt(tempEquation[index + 1]);
+          break;
+
+        case "-":
+          if (!tempEquation[index + 1]) return;
+          tempFinalResult -= parseInt(tempEquation[index + 1]);
+          break;
+      }
+    });
+    // prints out final result
+    console.log("Final result: " + tempFinalResult);
+    setTextFieldResult(`${tempEquation.join(" ")} = ${tempFinalResult}`);
+
+    // reset to default value
+    setTextField("");
+    setCurrentNumber("");
+    setCurrentEquation([]);
   }
 
   return (
     <div>
-      <TextField textField={textField} textFieldResult={finalResult}></TextField>
+      <TextField textField={textField} textFieldResult={textFieldResult}></TextField>
       <div className={styles.buttonGroup}>
         <Numpad numberButton={number}></Numpad>
         <Operators backspace={backspace} plus={plus} minus={minus} equals={equals}></Operators>
