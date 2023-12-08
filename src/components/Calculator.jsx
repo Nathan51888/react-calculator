@@ -20,7 +20,18 @@ function Calculator() {
   }
 
   function backspace() {
-    return;
+    if (!currentNumber && currentEquation.length > 1) {
+      const tempEquation = [...currentEquation];
+      tempEquation.pop();
+      setCurrentNumber(tempEquation[tempEquation.length - 1]);
+      tempEquation.pop();
+      setCurrentEquation(tempEquation);
+      console.log("deleted an operator");
+      return;
+    }
+
+    setCurrentNumber(currentNumber.slice(0, -1));
+    console.log("deleted a number");
   }
 
   function plus() {
