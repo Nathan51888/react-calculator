@@ -1,19 +1,6 @@
 import styles from "./Operators.module.css";
 
-function Operators() {
-  function backspace() {
-    return;
-  }
-  function plus() {
-    return;
-  }
-  function minus() {
-    return;
-  }
-  function equals() {
-    return;
-  }
-
+function Operators({ backspace, plus, minus, equals }) {
   return (
     <>
       <div className={styles.operatorGroup}>
