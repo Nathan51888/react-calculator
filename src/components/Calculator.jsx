@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Calculator.module.css";
 import Numpad from "./Numpad";
 import Operators from "./Operators";
@@ -10,21 +10,55 @@ function Calculator() {
   const [textField, setTextField] = useState("");
   const [finalResult, setFinalResult] = useState(0);
 
+  useEffect(() => {
+    setTextField(currentEquation.join("") + currentNumber);
+  }, [currentEquation, currentNumber]);
+
   function number(e) {
     const num = e.target.textContent.toString();
     setCurrentNumber(currentNumber + num);
-    setTextField(textField + num);
   }
 
   function backspace() {
     return;
   }
+
   function plus() {
-    return;
+    if (!currentNumber) {
+      switch (currentEquation[currentEquation.length - 1]) {
+        case "+":
+          console.log("repeated operator");
+          return;
+        case "-": {
+          const temp = [...currentEquation];
+          temp[currentEquation.length - 1] = "+";
+          setCurrentEquation(temp);
+          return;
+        }
+      }
+    }
+    setCurrentEquation([...currentEquation, currentNumber, "+"]);
+    setCurrentNumber("");
   }
+
   function minus() {
-    return;
+    if (!currentNumber) {
+      switch (currentEquation[currentEquation.length - 1]) {
+        case "-":
+          console.log("repeated operator");
+          return;
+        case "+": {
+          const temp = [...currentEquation];
+          temp[currentEquation.length - 1] = "-";
+          setCurrentEquation(temp);
+          return;
+        }
+      }
+    }
+    setCurrentEquation([...currentEquation, currentNumber, "-"]);
+    setCurrentNumber("");
   }
+
   function equals() {
     return;
   }
